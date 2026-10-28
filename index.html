@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171315" />
+  <title>After Hours — Bindu's little corner</title>
+  <style>
+    /* ---------- 1. THE COLOUR PALETTE ---------- */
+    :root {
+      --night: #171315;
+      --panel: #211a1d;
+      --wine: #6b2638;
+      --rose: #c58e98;
+      --paper: #e7dcd0;
+      --dust: #a49a99;
+      --line: rgba(231, 220, 208, 0.17);
+    }
+
+    /* ---------- 2. BASIC PAGE STYLES ---------- */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 8%, rgba(107, 38, 56, 0.25), transparent 32rem),
+        var(--night);
+      color: var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--rose); }
+    .wrap { width: min(1080px, 90%); margin: 0 auto; }
+
+    /* ---------- 3. NAVIGATION ---------- */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--line);
+      font-family: Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .brand { color: var(--rose); letter-spacing: 0.15em; }
+    .nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+
+    /* ---------- 4. HERO / INTRO ---------- */
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      align-content: center;
+      padding: 5rem 0 4rem;
+      position: relative;
+    }
+    .eyebrow {
+      color: var(--rose);
+      font: 0.75rem/1.5 Arial, sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(3.3rem, 10vw, 7.6rem);
+      font-weight: 400;
+      letter-spacing: -0.065em;
+      line-height: 0.92;
+      max-width: 850px;
+      margin: 1rem 0 1.4rem;
+    }
+    h1 em { color: var(--rose); font-weight: 400; }
+    .intro {
+      max-width: 530px;
+      color: #c7b9b7;
+      font-size: 1.08rem;
+    }
+    .hero-bottom {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.7rem;
+    }
+    .button {
+      display: inline-block;
+      border: 1px solid var(--rose);
+      color: var(--paper);
+      padding: 0.8rem 1.1rem;
+      font: 0.75rem Arial, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+    }
+    .button:hover { background: var(--wine); color: white; }
+    .small-note { color: var(--dust); font-size: 0.85rem; }
+
+    /* ---------- 5. SECTIONS AND CARDS ---------- */
+    section { padding: 4.5rem 0; border-top: 1px solid var(--line); }
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.7rem;
+    }
+    h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; margin: 0; }
+    .section-number { color: var(--rose); font: 0.75rem Arial, sans-serif; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.035), transparent), var(--panel);
+      border: 1px solid var(--line);
+      padding: 1.4rem;
+      min-height: 190px;
+    }
+    .card .symbol { color: var(--rose); font-size: 1.4rem; }
+    .card h3 { font-size: 1.35rem; font-weight: 400; margin: 0.5rem 0; }
+    .card p { color: #c7b9b7; font-size: 0.94rem; margin-bottom: 0; }
+    .book-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 1rem;
+    }
+    .book-list li {
+      padding-left: 0.8rem;
+      border-left: 1px solid rgba(197, 142, 152, 0.55);
+    }
+    .book-title {
+      color: var(--paper);
+      display: inline-block;
+      border-bottom: 1px solid rgba(197, 142, 152, 0.5);
+      font-size: 1rem;
+    }
+    .book-title:hover, .author-link:hover { color: var(--rose); }
+    .book-byline {
+      display: block;
+      color: var(--dust);
+      font: 0.76rem/1.6 Arial, sans-serif;
+      margin-top: 0.2rem;
+    }
+    .author-note { margin-top: 1.1rem; }
+    .author-link {
+      color: var(--rose);
+      font-size: 0.84rem;
+      text-decoration: underline;
+      text-decoration-color: rgba(197, 142, 152, 0.5);
+      text-underline-offset: 3px;
+    }
+    .lana-playlist {
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(197, 142, 152, 0.28);
+    }
+    .playlist-label {
+      color: var(--rose) !important;
+      font: 0.7rem/1.5 Arial, sans-serif !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem !important;
+    }
+    .song-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.42rem;
+    }
+    .song-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--paper);
+      font-size: 0.92rem;
+      padding: 0.22rem 0;
+      border-bottom: 1px solid rgba(231, 220, 208, 0.08);
+      transition: color 160ms ease;
+    }
+    .song-list a span { color: var(--rose); }
+    .song-list a:hover { color: var(--rose); }
+    .tag {
+      display: inline-block;
+      color: var(--rose);
+      border: 1px solid rgba(197, 142, 152, 0.35);
+      padding: 0.25rem 0.5rem;
+      margin: 0.25rem 0.2rem 0 0;
+      font: 0.68rem Arial, sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------- 6. LITTLE NOTE BUTTON ---------- */
+    .note-box {
+      background: #e7dcd0;
+      color: #292023;
+      padding: 1.5rem;
+      max-width: 680px;
+      transform: rotate(-0.4deg);
+    }
+    .note-box p { margin: 0.4rem 0; }
+    #random-note { font-size: 1.25rem; }
+    .note-box button { color: #292023; border-color: #6b2638; margin-top: 1rem; }
+
+    /* ---------- 7. FOOTER ---------- */
+    footer {
+      padding: 2.5rem 0 3rem;
+      color: var(--dust);
+      font: 0.8rem Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- 8. MOBILE LAYOUT ---------- */
+    @media (max-width: 700px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      .hero { min-height: 65vh; padding: 4rem 0; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 3.2rem 0; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#home">AFTER HOURS ✶</a>
+      <div class="nav-links">
+        <a href="#currently">Currently</a>
+        <a href="#workbench">Workbench</a>
+        <a href="#archive">Archive</a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero" id="home">
+        <div class="eyebrow">A small corner of the internet · Est. 2026</div>
+        <h1>Somewhere<br>between <em>dreaming</em><br>and doing.</h1>
+        <p class="intro">
+          Hi, I'm Bindu — an ECE student, curious mind, music-on-repeat person,
+          and collector of little ideas. This is my corner for things I'm learning,
+          making, loving, and figuring out.
+        </p>
+        <div class="hero-bottom">
+          <a class="button" href="#workbench">Wander around ↓</a>
+          <span class="small-note">Currently under construction, always becoming.</span>
+        </div>
+      </header>
+
+      <section id="currently">
+        <div class="section-heading">
+          <h2>Currently, lately, always.</h2>
+          <span class="section-number">01 / THE PRESENT</span>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="symbol">♫</div>
+            <h3>On repeat</h3>
+            <p>Lana Del Rey, late-night playlists, and songs that feel like a whole film scene.</p>
+            
+            <div class="lana-playlist">
+              <p class="playlist-label">Lana Del Rey · on repeat</p>
+              <ul class="song-list">
+                <li><a href="https://open.spotify.com/search/Brooklyn%20Baby%20Lana%20Del%20Rey" target="_blank" rel="noopener noreferrer">Brooklyn Baby <span>↗</span></a></li>
+                <li><a href="https://open.spotify.com/search/West%20Coast%20Lana%20Del%20Rey" target="_blank" rel="noopener noreferrer">West Coast <span>↗</span></a></li>
+                <li><a href="https://open.spotify.com/search/Cinnamon%20Girl%20Lana%20Del%20Rey" target="_blank" rel="noopener noreferrer">Cinnamon Girl <span>↗</span></a></li>
+                <li><a href="https://open.spotify.com/search/Black%20Beauty%20Lana%20Del%20Rey" target="_blank" rel="noopener noreferrer">Black Beauty <span>↗</span></a></li>
+                <li><a href="https://open.spotify.com/search/Diet%20Mountain%20Dew%20Lana%20Del%20Rey" target="_blank" rel="noopener noreferrer">Diet Mountain Dew <span>↗</span></a></li>
+              </ul>
+            </div>
+            <span class="tag">MUSIC</span><span class="tag">INDIE</span>
+          </article>
+          <article class="card">
+            <div class="symbol">✧</div>
+            <h3>On my shelf</h3>
+            <p class="shelf-intro">Mythology, women with stories of their own, and worlds I keep returning to.</p>
+            <ul class="book-list">
+              <li>
+                <a class="book-title" href="https://www.chitradivakaruni.com/the-forest-of-enchantments" target="_blank" rel="noopener noreferrer">The Forest of Enchantments ↗</a>
+                <span class="book-byline">by Chitra Banerjee Divakaruni</span>
+              </li>
+              <li>
+                <a class="book-title" href="https://www.chitradivakaruni.com/home" target="_blank" rel="noopener noreferrer">The Palace of Illusions ↗</a>
+                <span class="book-byline">by Chitra Banerjee Divakaruni</span>
+              </li>
+            </ul>
+            <p class="author-note">
+              <a class="author-link" href="https://www.chitradivakaruni.com/about/bio/" target="_blank" rel="noopener noreferrer">Meet the author: Chitra Banerjee Divakaruni ↗</a>
+            </p>
+            <span class="tag">BOOKS</span><span class="tag">MYTHOLOGY</span>
+          </article>
+          <article class="card">
+            <div class="symbol">☾</div>
+            <h3>On my mind</h3>
+            <p>Building confidence, learning new things, and making a life that feels like mine.</p>
+            <span class="tag">LIFE</span><span class="tag">GROWING</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="workbench">
+        <div class="section-heading">
+          <h2>The workbench.</h2>
+          <span class="section-number">02 / MAKING THINGS</span>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="symbol">⌁</div>
+            <h3>Circuits & signals</h3>
+            <p>ECE experiments, digital logic, circuit sketches, and the hardware things I'm learning.</p>
+            <span class="tag">ECE</span><span class="tag">HARDWARE</span>
+          </article>
+          <article class="card">
+            <div class="symbol">✳</div>
+            <h3>CropCare</h3>
+            <p>A student startup concept exploring how farmers can get trustworthy crop-disease confirmation.</p>
+            <span class="tag">IDEA IN PROGRESS</span>
+          </article>
+          <article class="card">
+            <div class="symbol">⌘</div>
+            <h3>This website</h3>
+            <p>My first personal website.</p>
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JAVASCRIPT</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="archive">
+        <div class="section-heading">
+          <h2>A note from the archive.</h2>
+          <span class="section-number">03 / RANDOM THOUGHTS</span>
+        </div>
+        <div class="note-box">
+          <div class="eyebrow">A tiny reminder</div>
+          <p id="random-note">You don't have to have it all figured out to begin.</p>
+          <button class="button" id="note-button" type="button">Another little note ↻</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Made slowly, with curiosity and a little midnight energy.</span>
+      <a href="#home">Back to the top ↑</a>
+    </footer>
+  </div>
+
+  <script>
+    // A tiny JavaScript feature: clicking the button changes the note.
+    const notes = [
+      "You don't have to have it all figured out to begin.",
+      "Small progress is still a plot twist.",
+      "Make room for the things that make you feel like yourself.",
+      "Collect moments, not just milestones.",
+      "You are allowed to be a beginner at something you love.",
+      "A little curiosity can take you somewhere unexpected."
+    ];
+
+    const noteText = document.querySelector("#random-note");
+    const noteButton = document.querySelector("#note-button");
+    let previousIndex = 0;
+
+    noteButton.addEventListener("click", () => {
+      let nextIndex = Math.floor(Math.random() * notes.length);
+      while (notes.length > 1 && nextIndex === previousIndex) {
+        nextIndex = Math.floor(Math.random() * notes.length);
+      }
+      previousIndex = nextIndex;
+      noteText.textContent = notes[nextIndex];
+    });
+  </script>
+</body>
+</html>
